@@ -1,4 +1,4 @@
-// The game's sounds. Weapons bring their own (sndinfo.<weapon>, next to this file).
+// The game's sounds. Each weapon's are in weapons/<weapon>/sndinfo.txt, included at the end.
 //
 // Horde Hammer's sounds are names starting with hh/ that point at Doom's sounds until a game gives
 // them its own. To replace one, put your file in sounds/ and name it here, like:
@@ -7,3 +7,6 @@
 // hh/round_start sounds/round_start
 //
 // The full list is in the library's SNDINFO.txt.
+
+// Weapons: one line per weapon (its script is included in ZSCRIPT.zs)
+$include "weapons/rifle/sndinfo.txt"

@@ -14,7 +14,7 @@ It comes with a small playable map: two rooms joined by a door you buy, zombie s
 |---|---|
 | `spawnroom/` | The game. This folder is the root of your pk3: UZDoom can load it as it is, and `publish.py` zips it |
 | `spawnroom/maps/map01.wad` | The example map (UDMF), with its script inside it |
-| `spawnroom/zscript.rifle`, `sndinfo.rifle`, `sprites/weapons/rifle/` | The example weapon, a drop-in package |
+| `spawnroom/weapons/rifle/`, `spawnroom/sprites/weapons/rifle/` | The example weapon: its script and sounds, and its pictures |
 | `spawnroom/zscript/spawnroom/` | The game's own ZScript: its settings (`defaults.zs`) and its player (`player.zs`) |
 | `spawnroom/MAPINFO.txt` | Maps, the player class, the HUD, the skill, and numbers for your own map things |
 | `spawnroom/LANGUAGE.txt`, `SNDINFO.txt`, `CVARINFO.txt`, `MENUDEF.txt` | Text, sounds, your own settings and their menu |
@@ -108,18 +108,19 @@ Every Horde Hammer setting (points, costs, zombie health and numbers per round, 
 
 ### Adding a weapon
 
-Weapons are drop-in packages: a weapon is a few files at the root of the game folder, and nothing else changes. The rifle is the example:
+A weapon is a folder of its own, plus its pictures (which only load from `sprites/`). The rifle is the example:
 
 ```
-spawnroom/zscript.rifle              the weapon, its ammo and its wall buy
-spawnroom/sndinfo.rifle              its sounds
-spawnroom/sprites/weapons/rifle/     its pictures
+spawnroom/weapons/rifle/rifle.zs        the weapon, its ammo and its wall buy
+spawnroom/weapons/rifle/sndinfo.txt     its sound names
+spawnroom/weapons/rifle/sounds/         its sound files (the rifle uses the IWAD's, so it has none)
+spawnroom/sprites/weapons/rifle/        its pictures
 ```
 
-To add yours, copy the three, replace `rifle` and `Rifle` with your weapon's name in the file names and inside them, and:
+Files in folders don't load by themselves, so each weapon has a line in `ZSCRIPT.zs` (`#include "weapons/rifle/rifle.zs"`) and one at the end of `SNDINFO.txt` (`$include "weapons/rifle/sndinfo.txt"`). To add yours, copy the two folders, replace `rifle` and `Rifle` with your weapon's name in the folder and file names and inside the files, add its two lines, and:
 
 1. **Sprites**: draw your frames and give them a new 4-letter sprite name that no other sprite uses (the rifle's is `SRR`+a letter: `SRRG`, `SRRF`, `SRRP`, `SRRD`), then use those names in the weapon's `States`. A file is named sprite + frame letter + `0`, like `srrga0.png`. First-person frames need offsets so they sit at the bottom of the screen; [SLADE](https://slade.mancubus.net/) sets them.
-2. **Sounds**: put your files in `sounds/weapons/<weapon>/` and point the names in `sndinfo.<weapon>` at them.
+2. **Sounds**: put your files in `weapons/<weapon>/sounds/` and point the names in its `sndinfo.txt` at them by path (`weapons/<weapon>/sounds/fire.ogg`).
 3. **Numbers**: the magazine, damage, fire and reload speed, and how often the box gives it (`HH_Weapon.BoxWeight`), are in its `Default` block, explained there.
 4. **Where players get it**: the box gives any weapon in a slot (`Weapon.SlotNumber`), so a weapon with a slot and a box weight is in the box. For a wall buy, give its wall buy class a free number in `MAPINFO.txt`'s `DoomEdNums` (the template's start at 28000) and place it in the map. For a starting weapon, see `player.zs`.
 
@@ -145,7 +146,7 @@ The game starts once both are in. Both must load the same files in the same orde
 Several zombies maps in one pk3 work like one map, with more of them:
 
 - **Maps**: `maps/map01.wad`, `maps/map02.wad`... each with its own things and its own script.
-- **Weapons**: drop-in packages load for every map, so all the maps share them. Each map chooses which it sells on its walls; the box gives everything in the players' slots on every map.
+- **Weapons**: they load for every map, so all the maps share them. Each map chooses which it sells on its walls; the box gives everything in the players' slots on every map.
 - **The game's ZScript, text, sounds and settings** are shared too. For a setting that differs between maps, check the map in `defaults.zs` (it runs at the start of every map): `if (Level.MapName ~== "MAP02") settings.Set("hh_box_cost", "500");`. A map's script can also change things as it plays, through `hh.acs`.
 
 **Choosing a map.** A zombies map never ends in an exit to the next one: the game is over when everyone is down. So players need a way to pick a map before they start, and the simplest is UZDoom's own **New Game** menu: give every map an `episode` entry in `MAPINFO.txt`, and the menu lists them by name.

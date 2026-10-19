@@ -1,16 +1,16 @@
-version "5.0.0"
-
-// The rifle: an example drop-in weapon package. A weapon is these files, and nothing else in the
-// game needs to change:
+// The rifle: an example weapon package. A weapon is a folder of its own, plus its pictures:
 //
-//     zscript.rifle                   this file: the weapon, its ammo and its wall buy
-//     sndinfo.rifle                   its sound names
-//     sprites/weapons/rifle/          its pictures (SRR?: names are 4 letters, a frame letter, a 0)
+//     weapons/rifle/rifle.zs          this file: the weapon, its ammo and its wall buy
+//     weapons/rifle/sndinfo.txt       its sound names
+//     weapons/rifle/sounds/           its sound files (the rifle has none: it uses the IWAD's)
+//     sprites/weapons/rifle/          its pictures (SRR?: names are 4 letters, a frame letter, a 0;
+//                                     pictures only load from sprites/, so they can't live here)
 //
-// The engine loads every file at the root named zscript.<anything> and sndinfo.<anything>, so to
-// add a weapon you copy its files in; to make your own, copy these, rename every "Rifle" and the
-// sprite letters (SRR), and draw your own frames. The art here is original (0BSD); the sounds are
-// the IWAD's own, so nothing copyrighted ships with the template.
+// Files in folders don't load by themselves: ZSCRIPT.zs has an #include line for this file and
+// SNDINFO.txt an $include line for sndinfo.txt. To make your own weapon, copy the two folders,
+// rename every "Rifle" and the sprite letters (SRR), draw your own frames, and add your two lines.
+// The art here is original (0BSD); the sounds are the IWAD's own, so nothing copyrighted ships
+// with the template.
 
 // Its ammo: what Max Ammo refills and wall buys sell. Every weapon brings its own.
 class SpawnRoom_RifleAmmo : Ammo {

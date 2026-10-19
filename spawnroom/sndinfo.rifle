@@ -1,7 +1,0 @@
-// The rifle's sounds: a name the weapon plays, then the sound it plays. These are the IWAD's own
-// (Doom 2 and Freedoom both have them); put your own files in sounds/weapons/rifle/ and name them
-// here instead, like: spawnroom/rifle/fire sounds/weapons/rifle/fire
-
-spawnroom/rifle/fire dspistol
-spawnroom/rifle/out dsdbopn
-spawnroom/rifle/in dsdbcls
