@@ -1,0 +1,35 @@
+// The game's MAPINFO. Horde Hammer's own only adds its event handlers and the numbers of its map
+// things (27000-27099); the player class, status bar, skill and maps are the game's, here.
+
+// Each map is an episode, so the New Game menu lists them (a map pack adds one per map)
+clearEpisodes
+
+episode MAP01 {
+    name = "$SPAWNROOM_MAP01"
+    noSkillMenu
+}
+
+map MAP01 lookup "SPAWNROOM_MAP01" {
+    sky1 = "SKY1"
+    next = "MAP01"      // zombies maps don't lead anywhere; the game ends when everyone is down
+}
+
+// One skill: Horde Hammer's rounds are the difficulty
+clearSkills
+
+skill Normal {
+    name = "Normal"
+    spawnFilter = normal
+    defaultSkill
+}
+
+GameInfo {
+    PlayerClasses = "SpawnRoom_Player"
+    StatusBarClass = "HH_Hud"       // the whole screen is Horde Hammer's HUD
+}
+
+// Numbers for the game's own map things (Ultimate Doom Builder shows them under "SpawnRoom").
+// Keep clear of the library's 27000-27099 and the engine's own.
+DoomEdNums {
+    28000 = "SpawnRoom_RifleWallBuy"
+}

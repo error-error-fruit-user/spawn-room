@@ -1,0 +1,10 @@
+// The game's options, added to the Options menu (Horde Hammer adds its own Horde Hammer Options)
+
+OptionValue "SpawnRoom_Zombies" {
+    0, "$SPAWNROOM_MENU_ZOMBIES_HH"
+    1, "$SPAWNROOM_MENU_ZOMBIES_VARIED"
+}
+
+AddOptionMenu "OptionsMenu" {
+    Option "$SPAWNROOM_MENU_ZOMBIES", "spawnroom_varied_zombies", "SpawnRoom_Zombies"
+}

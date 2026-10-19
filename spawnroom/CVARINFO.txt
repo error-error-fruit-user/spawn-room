@@ -1,0 +1,5 @@
+// The game's own settings (Horde Hammer's are in its CVARINFO.txt; set their defaults in
+// zscript/spawnroom/defaults.zs, never here: defining one of the library's CVars again is a fatal
+// error). A server setting is the host's; a user setting is each player's own.
+
+server bool spawnroom_varied_zombies = false;   // Doom's monsters instead of Horde Hammer's zombies (from the next map start)

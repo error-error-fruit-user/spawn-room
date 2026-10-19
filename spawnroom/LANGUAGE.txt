@@ -1,0 +1,13 @@
+[enu default]
+
+// The game's text. Any of Horde Hammer's strings (HH_..., listed in the library's LANGUAGE.txt) can
+// be redefined here too.
+
+SPAWNROOM_MAP01 = "Spawn Room";
+SPAWNROOM_MENU_ZOMBIES = "Zombies";
+SPAWNROOM_MENU_ZOMBIES_HH = "Horde Hammer's zombies";
+SPAWNROOM_MENU_ZOMBIES_VARIED = "Doom's monsters";
+
+// Text a map's own ACS prints is named after the map, so the map never needs recompiling when the
+// game's prefix is renamed
+MAP01_BONUS = "500 bonus points for everyone!";

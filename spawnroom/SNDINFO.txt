@@ -1,0 +1,9 @@
+// The game's sounds. Weapons bring their own (sndinfo.<weapon>, next to this file).
+//
+// Horde Hammer's sounds are names starting with hh/ that point at Doom's sounds until a game gives
+// them its own. To replace one, put your file in sounds/ and name it here, like:
+//
+// hh/purchase sounds/purchase
+// hh/round_start sounds/round_start
+//
+// The full list is in the library's SNDINFO.txt.
