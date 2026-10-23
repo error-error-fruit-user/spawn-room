@@ -19,7 +19,7 @@ It comes with a small playable map: two rooms joined by a door you buy, zombie s
 | `spawnroom/MAPINFO.txt` | Maps, the player class, the HUD, the skill, and numbers for your own map things |
 | `spawnroom/LANGUAGE.txt`, `SNDINFO.txt`, `CVARINFO.txt`, `MENUDEF.txt` | Text, sounds, your own settings and their menu |
 | `acs/hh.acs` | Horde Hammer's functions for map scripts (a copy of the library's) |
-| `publish.py` | Packs the game into `published/spawnroom.pk3` |
+| `publish.py` | Packs the game into `published/releases/spawnroom.pk3` |
 | `rename.py` | Renames the template to your game, once |
 
 Every file has comments saying what to change and why.
@@ -52,7 +52,7 @@ The rest of this README says `spawnroom`; read it as your name.
 uzdoom -iwad freedoom2.wad -file horde-hammer.pk3 spawnroom
 ```
 
-Horde Hammer always loads **before** the game (without it, the game stops at startup with "Unknown class HH_..."). A folder loads like a pk3, so there is nothing to pack while you work. To share the game, `python3 publish.py` writes `published/spawnroom.pk3` (with your `LICENSE` next to it); players load `horde-hammer.pk3` and then it. It also warns about things UZDoom gets wrong without telling you, like two files whose names differ only in case.
+Horde Hammer always loads **before** the game (without it, the game stops at startup with "Unknown class HH_..."). A folder loads like a pk3, so there is nothing to pack while you work. To share the game, `python3 publish.py` writes `published/releases/spawnroom.pk3` (with your `LICENSE` next to it); players load `horde-hammer.pk3` and then it. It also warns about things UZDoom gets wrong without telling you, like two files whose names differ only in case.
 
 ## Making the map
 
