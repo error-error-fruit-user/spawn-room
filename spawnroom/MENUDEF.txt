@@ -8,3 +8,8 @@ OptionValue "SpawnRoom_Zombies" {
 AddOptionMenu "OptionsMenu" {
     Option "$SPAWNROOM_MENU_ZOMBIES", "spawnroom_varied_zombies", "SpawnRoom_Zombies"
 }
+
+// and the simple options menu, which UZDoom shows instead while m_simpleoptions is on
+AddOptionMenu "OptionsMenuSimple" {
+    Option "$SPAWNROOM_MENU_ZOMBIES", "spawnroom_varied_zombies", "SpawnRoom_Zombies"
+}
